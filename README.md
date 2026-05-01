@@ -3,25 +3,34 @@
 
 1. Nombre del proyecto Defina un nombre claro, coherente y representativo de la solución a desarrollar. 
 Revender + fy (entorno digital)= Revenfy.
+
 2. Integrantes del equipo Relacione los nombres completos de los aprendices que conforman el equipo de Trabajo.
 Luis Mateo Beltrán Repizo.
 Jhon Alex Beltrán Herrara.
 Brayan Santiago Suarez Piraquive.
 Anamaria Forigua Murcia.
+
 3. Contexto del proyecto Describa el entorno o situación en la cual surge la idea del proyecto, explicando las razones que motivan su desarrollo.  Apoye con datos estadísticos si aplica 
 El proyecto Revenfy surge en el CGMLTI del SENA en Bogotá debido a la necesidad de contar con un espacio digital seguro y organizado para la compra y venta de productos de segunda mano entre aprendices e instructores, ya que actualmente estas actividades se realizan de forma informal, generando riesgos y desorganización. Además, busca fortalecer competencias empresariales como la venta y el emprendimiento, alineándose con la economía circular y el uso de tecnologías. Este proyecto responde tanto a necesidades económicas de los estudiantes como a tendencias globales de reutilización, aprovechando el gran número de usuarios potenciales dentro del SENA para generar impacto educativo, social y económico.
+
 4. Definición del problema Plantee de manera clara y concreta la problemática identificada, indicando qué situación requiere ser solucionada.
 Muchos aprendices e instructores poseen artículos de segunda mano que podrían vender, pero no cuentan con un espacio digital, organizado y seguro dentro del CGMLTI para hacerlo.
- 5. Impacto del problema Explique las consecuencias que genera la problemática en el entorno (usuarios, empresa, comunidad, etc.). 
+
+5. Impacto del problema Explique las consecuencias que genera la problemática en el entorno (usuarios, empresa, comunidad, etc.). 
 Aprendices e instructores carecen de herramientas digitales adecuadas y dificultad para medir su desempeño comercial, lo que limita el desarrollo de sus competencias empresariales.
+
 6. Solución propuesta Describa la idea general de la solución de software que se plantea para dar respuesta al problema identificado. 
 A diferencia de plataformas como Facebook Marketplace, nuestro aplicativo ofrecera un entorno controlado, estructurado, donde se garantiza la seguridad de los usuarios, y la generación de métricas para el aprendizaje.
+
 7. Impacto de la solución Argumente los beneficios y mejoras que se esperan al implementar la solución Propuesta. 
 La implementación del aplicativo web Revenfy permitirá a aprendices e instructores contar con un espacio digital seguro y organizado para comprar y vender productos de segunda mano, solucionando la falta de una plataforma interna. Además, fomentará el desarrollo de habilidades comerciales como la negociación y gestión de ventas.  A su vez, permitirá generar métricas que ayuden a analizar el desempeño de los usuarios. Finalmente, optimizará la interacción y facilitará los procesos de compra y venta dentro del CGMLTI.
+
 8. Alcance de la solución Delimite claramente hasta dónde llega el proyecto, especificando qué funcionalidades incluye y qué aspectos quedan fuera del desarrollo. Recomendación El documento debe redactarse con claridad, coherencia y enfoque técnico, evitando ambigüedades, y asegurando que cada apartado aporte información relevante para la construcción de la propuesta técnica del software.
 El aplicativo web permitirá la interacción comercial entre aprendices e instructores del Servicio Nacional de Aprendizaje, mediante un entorno digital controlado donde surgen procesos de compra y venta de productos de segunda mano (los pagos se harán entre comprador y vendedor).
+
 9 Requerimientos funcionales y no funcionales
 https://docs.google.com/spreadsheets/d/1HdNaC2IoupAgt-yWgtGhATw2RnvzU72H/edit?usp=sharing&ouid=117765535636987492257&rtpof=true&sd=true
+
 10 Glosario de palabras desconocidas
 Aplicativo Web: Como una tienda mágica que vive dentro de internet. La abres con el navegador (Chrome) y puedes comprar y vender cosas sin salir de la casa.
 Segunda Mano: Cosas que alguien ya usó pero todavía están buenas (como un juguete que tu amigo ya no quiere y te lo vende).
@@ -44,6 +53,7 @@ Métricas: Números que ayudan a aprender, como "¿cuántos productos vendí?" o
 Entorno Controlado: Un lugar seguro donde solo entran aprendices e instructores del SENA (no cualquiera como en Facebook).
 Despliegue (Deploy): Subir la aplicación a internet para que la gente real pueda usarla.
 Repositorio: El lugar en GitHub donde guardan todo el código (como una carpeta en la nube).
+
 11 Tips para mejorar nuestro software
 Agregar sistema de calificaciones
  Permitir que los usuarios califiquen a compradores y vendedores para aumentar la confianza dentro del aplicativo.
