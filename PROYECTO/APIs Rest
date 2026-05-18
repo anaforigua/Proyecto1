@@ -1,1 +1,812 @@
+# ENDPOINTS API REST — PROYECTO REVENFY
+
+Basado en los módulos, historias de usuario, requerimientos funcionales y ejemplos de API REST de tu proyecto **Revenfy**. 
+
+---
+
+# 1. MÓDULO DE USUARIOS
+
+Este módulo permite:
+
+* Registro
+* Login
+* Recuperación de contraseña
+* Gestión de perfiles
+* Validación SENA
+
+
+
+---
+
+# Registrar usuario
+
+## Endpoint
+
+```http
+POST /api/usuarios
+```
+
+## Descripción
+
+Permite crear una cuenta nueva.
+
+## Body JSON
+
+```json
+{
+  "nombre": "Ana Maria",
+  "correo": "anamaria@sena.edu.co",
+  "password": "123456",
+  "rol": "aprendiz"
+}
+```
+
+## Respuestas
+
+### 201 Created
+
+```json
+{
+  "mensaje": "Usuario registrado correctamente"
+}
+```
+
+### 409 Conflict
+
+```json
+{
+  "error": "El correo ya existe"
+}
+```
+
+### 422 Unprocessable Entity
+
+```json
+{
+  "error": "Correo inválido"
+}
+```
+
+---
+
+# Iniciar sesión
+
+## Endpoint
+
+```http
+POST /api/login
+```
+
+## Body JSON
+
+```json
+{
+  "correo": "anamaria@sena.edu.co",
+  "password": "123456"
+}
+```
+
+## Respuestas
+
+### 200 OK
+
+```json
+{
+  "token": "jwt_token",
+  "mensaje": "Inicio de sesión exitoso"
+}
+```
+
+### 401 Unauthorized
+
+```json
+{
+  "error": "Credenciales incorrectas"
+}
+```
+
+---
+
+# Recuperar contraseña
+
+## Endpoint
+
+```http
+POST /api/usuarios/recuperar-password
+```
+
+## Body JSON
+
+```json
+{
+  "correo": "anamaria@sena.edu.co"
+}
+```
+
+## Respuestas
+
+### 200 OK
+
+```json
+{
+  "mensaje": "Correo enviado correctamente"
+}
+```
+
+### 404 Not Found
+
+```json
+{
+  "error": "Usuario no encontrado"
+}
+```
+
+---
+
+# Obtener perfil
+
+## Endpoint
+
+```http
+GET /api/usuarios/{id}
+```
+
+## Respuesta
+
+### 200 OK
+
+```json
+{
+  "id": 1,
+  "nombre": "Ana Maria",
+  "correo": "anamaria@sena.edu.co",
+  "rol": "aprendiz"
+}
+```
+
+### 404 Not Found
+
+```json
+{
+  "error": "Usuario no encontrado"
+}
+```
+
+---
+
+# Actualizar perfil
+
+## Endpoint
+
+```http
+PUT /api/usuarios/{id}
+```
+
+## Body JSON
+
+```json
+{
+  "nombre": "Ana Maria Forigua",
+  "telefono": "3001234567"
+}
+```
+
+## Respuestas
+
+### 200 OK
+
+```json
+{
+  "mensaje": "Perfil actualizado"
+}
+```
+
+---
+
+# Eliminar usuario
+
+## Endpoint
+
+```http
+DELETE /api/usuarios/{id}
+```
+
+## Respuestas
+
+### 204 No Content
+
+### 404 Not Found
+
+```json
+{
+  "error": "Usuario no encontrado"
+}
+```
+
+---
+
+# 2. MÓDULO DE PRODUCTOS
+
+Permite:
+
+* Publicar productos
+* Editar publicaciones
+* Eliminar productos
+* Subir imágenes
+* Categorías
+
+
+
+---
+
+# Publicar producto
+
+## Endpoint
+
+```http
+POST /api/productos
+```
+
+## Body JSON
+
+```json
+{
+  "titulo": "Portátil Lenovo",
+  "descripcion": "Buen estado",
+  "precio": 850000,
+  "categoria": "Tecnología",
+  "estado": "Usado"
+}
+```
+
+## Respuestas
+
+### 201 Created
+
+```json
+{
+  "mensaje": "Producto publicado"
+}
+```
+
+---
+
+# Obtener productos
+
+## Endpoint
+
+```http
+GET /api/productos
+```
+
+## Respuesta
+
+### 200 OK
+
+```json
+[
+  {
+    "id": 1,
+    "titulo": "Portátil Lenovo",
+    "precio": 850000
+  }
+]
+```
+
+---
+
+# Obtener producto por ID
+
+## Endpoint
+
+```http
+GET /api/productos/{id}
+```
+
+## Respuestas
+
+### 200 OK
+
+```json
+{
+  "id": 1,
+  "titulo": "Portátil Lenovo",
+  "descripcion": "Buen estado",
+  "precio": 850000
+}
+```
+
+### 404 Not Found
+
+```json
+{
+  "error": "Producto no encontrado"
+}
+```
+
+---
+
+# Editar producto
+
+## Endpoint
+
+```http
+PUT /api/productos/{id}
+```
+
+## Body JSON
+
+```json
+{
+  "precio": 750000,
+  "estado": "Semi nuevo"
+}
+```
+
+## Respuestas
+
+### 200 OK
+
+```json
+{
+  "mensaje": "Producto actualizado"
+}
+```
+
+---
+
+# Eliminar producto
+
+## Endpoint
+
+```http
+DELETE /api/productos/{id}
+```
+
+## Respuestas
+
+### 204 No Content
+
+---
+
+# Subir imagen producto
+
+## Endpoint
+
+```http
+POST /api/productos/{id}/imagenes
+```
+
+## Body
+
+```json
+{
+  "imagen": "imagen.png"
+}
+```
+
+## Respuestas
+
+### 201 Created
+
+```json
+{
+  "mensaje": "Imagen subida"
+}
+```
+
+---
+
+# Buscar productos
+
+## Endpoint
+
+```http
+GET /api/productos/busqueda?categoria=Tecnologia
+```
+
+## Respuesta
+
+### 200 OK
+
+```json
+[
+  {
+    "titulo": "Portátil Lenovo"
+  }
+]
+```
+
+---
+
+# 3. MÓDULO DE COMPRA Y VENTA
+
+Permite:
+
+* Comunicación
+* Historial
+* Gestión ventas
+
+
+
+---
+
+# Crear conversación
+
+## Endpoint
+
+```http
+POST /api/chat
+```
+
+## Body JSON
+
+```json
+{
+  "id_comprador": 1,
+  "id_vendedor": 2,
+  "id_producto": 10
+}
+```
+
+## Respuestas
+
+### 201 Created
+
+```json
+{
+  "mensaje": "Chat creado"
+}
+```
+
+---
+
+# Enviar mensaje
+
+## Endpoint
+
+```http
+POST /api/chat/mensaje
+```
+
+## Body JSON
+
+```json
+{
+  "chat_id": 1,
+  "mensaje": "¿Sigue disponible?"
+}
+```
+
+## Respuestas
+
+### 201 Created
+
+```json
+{
+  "mensaje": "Mensaje enviado"
+}
+```
+
+---
+
+# Historial de compras
+
+## Endpoint
+
+```http
+GET /api/compras/{usuario_id}
+```
+
+## Respuesta
+
+### 200 OK
+
+```json
+[
+  {
+    "producto": "Portátil Lenovo",
+    "precio": 850000
+  }
+]
+```
+
+---
+
+# Historial de ventas
+
+## Endpoint
+
+```http
+GET /api/ventas/{usuario_id}
+```
+
+## Respuesta
+
+### 200 OK
+
+```json
+[
+  {
+    "producto": "Mouse Gamer",
+    "precio": 90000
+  }
+]
+```
+
+---
+
+# Cambiar estado producto
+
+## Endpoint
+
+```http
+PATCH /api/productos/{id}/estado
+```
+
+## Body JSON
+
+```json
+{
+  "estado": "Vendido"
+}
+```
+
+## Respuestas
+
+### 200 OK
+
+```json
+{
+  "mensaje": "Estado actualizado"
+}
+```
+
+---
+
+# 4. MÓDULO DE MÉTRICAS
+
+Permite:
+
+* Productos más vistos
+* Usuarios activos
+* Estadísticas
+
+
+
+---
+
+# Productos más vistos
+
+## Endpoint
+
+```http
+GET /api/metricas/productos-mas-vistos
+```
+
+## Respuesta
+
+### 200 OK
+
+```json
+[
+  {
+    "producto": "iPhone 12",
+    "vistas": 120
+  }
+]
+```
+
+---
+
+# Usuarios más activos
+
+## Endpoint
+
+```http
+GET /api/metricas/usuarios-activos
+```
+
+## Respuesta
+
+### 200 OK
+
+```json
+[
+  {
+    "usuario": "Ana Maria",
+    "ventas": 10
+  }
+]
+```
+
+---
+
+# Estadísticas generales
+
+## Endpoint
+
+```http
+GET /api/metricas/estadisticas
+```
+
+## Respuesta
+
+### 200 OK
+
+```json
+{
+  "usuarios": 150,
+  "productos": 340,
+  "ventas": 90
+}
+```
+
+---
+
+# 5. MÓDULO DE SEGURIDAD Y REPORTES
+
+Permite:
+
+* Reportar usuarios
+* Reportar productos
+* Control acceso
+
+
+
+---
+
+# Reportar usuario
+
+## Endpoint
+
+```http
+POST /api/reportes/usuarios
+```
+
+## Body JSON
+
+```json
+{
+  "usuario_reportado": 5,
+  "motivo": "Estafa"
+}
+```
+
+## Respuestas
+
+### 201 Created
+
+```json
+{
+  "mensaje": "Reporte enviado"
+}
+```
+
+---
+
+# Reportar producto
+
+## Endpoint
+
+```http
+POST /api/reportes/productos
+```
+
+## Body JSON
+
+```json
+{
+  "producto_id": 10,
+  "motivo": "Producto falso"
+}
+```
+
+## Respuestas
+
+### 201 Created
+
+```json
+{
+  "mensaje": "Producto reportado"
+}
+```
+
+---
+
+# Validar correo institucional
+
+## Endpoint
+
+```http
+POST /api/usuarios/validar-correo
+```
+
+## Body JSON
+
+```json
+{
+  "correo": "usuario@sena.edu.co"
+}
+```
+
+## Respuestas
+
+### 200 OK
+
+```json
+{
+  "mensaje": "Correo válido"
+}
+```
+
+### 422 Unprocessable Entity
+
+```json
+{
+  "error": "Debe usar correo institucional"
+}
+```
+
+---
+
+# 6. MÓDULO DE NOTIFICACIONES
+
+Permite:
+
+* Alertas
+* Mensajes
+* Actividad
+
+
+
+---
+
+# Obtener notificaciones
+
+## Endpoint
+
+```http
+GET /api/notificaciones/{usuario_id}
+```
+
+## Respuesta
+
+### 200 OK
+
+```json
+[
+  {
+    "mensaje": "Alguien está interesado en tu producto"
+  }
+]
+```
+
+---
+
+# Marcar notificación como leída
+
+## Endpoint
+
+```http
+PATCH /api/notificaciones/{id}
+```
+
+## Body JSON
+
+```json
+{
+  "leida": true
+}
+```
+
+## Respuestas
+
+### 200 OK
+
+```json
+{
+  "mensaje": "Notificación actualizada"
+}
+```
 
